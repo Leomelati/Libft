@@ -1,5 +1,5 @@
 # Libft
-*** Your very first own library ***
+***Your very first own library***
 
 The first project at 42 Network is implement some built-in functions that C provides because 42 Students can't use a huge part of them but we can implement it and use it after that. The following functions are requested in the official project:
 
