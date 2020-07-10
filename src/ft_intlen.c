@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hex_lower.c                              :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 14:45:52 by lmartins          #+#    #+#             */
-/*   Updated: 2020/07/10 07:38:17 by lmartins         ###   ########.fr       */
+/*   Created: 2020/06/30 03:28:59 by lmartins          #+#    #+#             */
+/*   Updated: 2020/07/04 18:03:09 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Converts an integer of base 10 into a hexadecimal base.
-** Prints the result in lowercase.
+** Count number of digits in an integer.
 */
 
-void	ft_putnbr_hex_lower(size_t nbr)
+size_t	ft_intlen(int num)
 {
-	size_t	mod;
+	unsigned int cont;
 
-	if (nbr > 0)
+	cont = 0;
+	while (num != 0)
 	{
-		mod = nbr % 16;
-		if (mod < 10)
-			mod += '0';
-		else
-			mod += ('a' - 10);
-		ft_putnbr_hex_lower(nbr / 16);
-		write(1, &mod, 1);
+		num /= 10;
+		++cont;
 	}
+	return (cont);
 }

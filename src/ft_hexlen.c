@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hex_lower.c                              :+:      :+:    :+:   */
+/*   ft_hexlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 14:45:52 by lmartins          #+#    #+#             */
-/*   Updated: 2020/07/10 07:38:17 by lmartins         ###   ########.fr       */
+/*   Created: 2020/07/07 06:27:41 by lmartins          #+#    #+#             */
+/*   Updated: 2020/07/10 07:38:07 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 /*
 ** Converts an integer of base 10 into a hexadecimal base.
-** Prints the result in lowercase.
+** Return the number of caracters after the conversion.
 */
 
-void	ft_putnbr_hex_lower(size_t nbr)
+size_t	ft_hexlen(size_t nbr)
 {
 	size_t	mod;
+	size_t	i;
 
+	i = 1;
 	if (nbr > 0)
 	{
 		mod = nbr % 16;
@@ -28,7 +30,7 @@ void	ft_putnbr_hex_lower(size_t nbr)
 			mod += '0';
 		else
 			mod += ('a' - 10);
-		ft_putnbr_hex_lower(nbr / 16);
-		write(1, &mod, 1);
+		i += ft_hexlen(nbr / 16);
 	}
+	return (i);
 }
