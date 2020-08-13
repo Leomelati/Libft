@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:51:35 by lmartins          #+#    #+#             */
-/*   Updated: 2020/07/16 09:28:45 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/08/13 09:06:15 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <ctype.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct		s_list
 {
@@ -81,5 +82,17 @@ size_t				ft_intlen(int num);
 size_t				ft_hexlen(size_t nbr);
 char				*ft_itoa_uns(unsigned int num);
 char				*ft_itoa_base(size_t nb, int base);
+
+/*
+** Get_Next_Line Project
+*/
+
+# define BUFFER_SIZE 100
+# define OPEN_MAX 10
+
+char	*ft_join(char const *s1, char const *s2);
+void	ft_strdel(char **str);
+int		get_line(char **str, char **line, int ret);
+int		get_next_line(int fd, char **line);
 
 #endif
