@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_replace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 20:37:15 by lmartins          #+#    #+#             */
-/*   Updated: 2021/06/20 07:26:33 by lmartins         ###   ########.fr       */
+/*   Created: 2021/03/08 06:24:46 by lmartins          #+#    #+#             */
+/*   Updated: 2021/06/20 07:17:58 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
-{
-	unsigned char	*cs1;
-	unsigned char	*cs2;
+/*
+** Finds and replace a char on a string
+*/
 
-	cs1 = (unsigned char *)s1;
-	cs2 = (unsigned char *)s2;
-	while (n > 0)
+void	ft_replace(char *str, char find, char replace)
+{
+	char	*position;
+
+	position = ft_strchr(str, find);
+	while (position)
 	{
-		if (*cs1 != *cs2)
-			return ((int)(*cs1 - *cs2));
-		n--;
-		cs1++;
-		cs2++;
+		*position = replace;
+		position = ft_strchr(position, find);
 	}
-	return (0);
 }

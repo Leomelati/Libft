@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:51:35 by lmartins          #+#    #+#             */
-/*   Updated: 2020/08/13 09:06:15 by lmartins         ###   ########.fr       */
+/*   Updated: 2021/06/27 08:31:44 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/resource.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <string.h>
@@ -23,7 +24,7 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -82,17 +83,37 @@ size_t				ft_intlen(int num);
 size_t				ft_hexlen(size_t nbr);
 char				*ft_itoa_uns(unsigned int num);
 char				*ft_itoa_base(size_t nb, int base);
+void				ft_swap(double *a, double *b);
+void				ft_replace(char *str, char find, char replace);
+char				*ft_strjoin_free(char *s1, char *s2);
+void				*ft_calloc_char(size_t count, char c);
+int					ft_isspace(int c);
+void				ft_split_free(char **ptr);
 
 /*
 ** Get_Next_Line Project
 */
 
-# define BUFFER_SIZE 100
-# define OPEN_MAX 10
+# define ERROR	-1
+# define READ_LINE	1
+# define NO_NEW_LINE	0
+# define NEW_LINE	1
 
-char	*ft_join(char const *s1, char const *s2);
-void	ft_strdel(char **str);
-int		get_line(char **str, char **line, int ret);
-int		get_next_line(int fd, char **line);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE	32
+# endif
+
+typedef struct s_get_next_line
+{
+	char		read[BUFFER_SIZE + 1];
+	char		*temp;
+	char		*break_line_ptr;
+	int			read_return;
+}				t_gnl;
+
+char				*ft_join(char const *s1, char const *s2);
+void				ft_strdel(char **str);
+int					get_line(char **str, char **line, int ret);
+int					get_next_line(int fd, char **line);
 
 #endif
